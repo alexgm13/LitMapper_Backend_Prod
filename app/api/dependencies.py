@@ -13,6 +13,8 @@ from app.repositories.articule_repo import ArticuleRepository
 from app.services.articule_service import ArticuleService
 from app.clients.openai_client import OpenAIClient
 from app.clients.modal_client import ModalClient
+from app.repositories.sota_repo import SotaRepository
+from app.services.sota_service import SotaService
 
 
 #OpenAI dependencies
@@ -50,4 +52,12 @@ async def articule_repo(conn: Connection = Depends(get_db_conn)) -> ArticuleRepo
 
 async def articule_service(repo: ArticuleRepository = Depends(articule_repo), openai_client: OpenAIClient = Depends(openai_client), modal_client: ModalClient = Depends(modal_client)) -> ArticuleService:
     return ArticuleService(repo, openai_client, modal_client)
+
+# SOTA dependencies
+async def sota_repo(conn: Connection = Depends(get_db_conn)) -> SotaRepository:
+    return SotaRepository(conn, queries)
+
+async def sota_service(repo: SotaRepository = Depends(sota_repo), openai_client: OpenAIClient = Depends(openai_client)) -> SotaService:
+    return SotaService(repo, openai_client)
+
 

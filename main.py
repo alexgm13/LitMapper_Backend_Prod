@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api.v1 import auth_route, project_route, context_route, articule_route
+from app.api.v1 import auth_route, project_route, context_route, articule_route, sota_route
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from contextlib import asynccontextmanager
@@ -42,6 +42,7 @@ app.include_router(auth_route.router, prefix="/api/v1/auth", tags=["Auth"])
 app.include_router(project_route.router, prefix="/api/v1/project", tags=["Project"])
 app.include_router(context_route.router, prefix="/api/v1/context", tags=["Context"])
 app.include_router(articule_route.router, prefix="/api/v1/articule", tags=["Articule"])
+app.include_router(sota_route.router, prefix="/api/v1/sota", tags=["SOTA"])
 
 @app.get("/")
 def status():

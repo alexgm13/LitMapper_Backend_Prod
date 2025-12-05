@@ -11,4 +11,11 @@ DO UPDATE SET
 RETURNING id_contexto;
 
 -- name: get_context(id_proyecto)^
-SELECT * FROM contexto WHERE id_proyecto = :id_proyecto;
+SELECT 
+    id_contexto,
+    id_proyecto,
+    area_general,
+    tema_especifico,
+    problema_investigacion,
+    metodologia
+FROM contexto WHERE id_proyecto = :id_proyecto;

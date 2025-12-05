@@ -82,3 +82,10 @@ class GapAnalysisFinal(BaseModel):
         le=1.0,
         description="Promedio simple de los scores anteriores."
     )
+    
+class ArticuleAnalyzed(BaseModel):
+    es_relevante: bool
+    justificacion: str
+
+class SoTA(BaseModel):
+    sota: str

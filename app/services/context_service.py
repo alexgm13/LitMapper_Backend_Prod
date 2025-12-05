@@ -15,7 +15,7 @@ class ContextService:
                 problema_investigacion=contexto.problema_investigacion,
                 metodologia=contexto.metodologia
             )
-            result = await self.repo.get_context(id_contexto)
+            result = await self.repo.get_context(contexto.id_proyecto)
             return ContextResponse(**result)
-        except Exception as e:
+        except Exception as e:  
             raise e
